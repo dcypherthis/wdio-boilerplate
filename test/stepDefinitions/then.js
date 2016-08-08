@@ -2,7 +2,7 @@
  * Then Steps
  */
 
-const examplePage = require('../pages/example.page');
+const examplePage = require('.././example.page');
 
 module.exports = function(){
 
