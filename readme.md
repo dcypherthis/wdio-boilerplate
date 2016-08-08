@@ -16,10 +16,6 @@ If you have nvm installed globally, you run `nvm install` to get the latest vers
 
 Now run `npm install` to grab all dependencies.
 
-To take full advantage of the command line and use grunt tasks you will need to make sure that you have added `node_modules/.bin` to your `$PATH`.  Otherwise you will need to install the following globally:
-
-```npm install -g  grunt-cli```
-
 #### Selenium
 
 Now let's get a selenium selenium server up and running. You **MUST** have selenium running to execute any webdriverIO tests, or it will fail fast with an error.
@@ -29,36 +25,6 @@ Before you can use the included selenium-standlone package, you need to run the 
 For development, you can run `npm run selenium`.  That's all there is to it.!
 
 Selenium is very taxing on memory and CPU and will you may need to kill it.  Assuming you do not have any other java processes running, you can use `pkill java` to terminate it. For a less invasive approach you can find the process with `lsof -i tcp:4444` and then terminate that specific process by PID.
-
-#### Docker & Selenium
-
-You can alternatively run selenium with docker.  If you haven't yet, please visit [docker's website](https://www.docker.com/) and follow the ***Getting Started*** link.  This will give you a wealth of great information about how docker works and install docker toolbox onto your machine.  It is recommended that you go through their entire tutorial in their getting started guide before you proceed.
-
-***Now you can launch docker-selenium.***
-
-First open a new docker shell in terminal with the the environment variables set. Docker toolbox has a handy way to do this with a tool called "Docker Quickstart Terminal", which will launch your terminal of choice, launch docker-machine if it's not started yet, and set environment variables for you to interact with the docker daemon.
-
-Now you can launch your container with  `docker run --name sel_ff -p 4444:4444  selenium/standalone-firefox`.
-This will launch a new container service named *sel_ff*, expose port 4444 (selenium's default port), and launch a headless version of firefox.
-
-You can alternatively launch a debug version of selenium-standalone via docker that you can watch by connecting to a specific port through a VNC connection.
-
-If you have a selenium container already running, stop it with `docker stop <container name>`.  Launch a new container service with `docker run --name sel_ff_debug -p 4444:4444 -p 5900:5900 selenium/standalone-firefox-debug`.  This will launch a firefox instance that exposes a visual layer to port 5900.  From your shell run `open vnc://:secret@192.168.99.100:5900`.  This will launch a screen sharing session for you to watch watch the browser.
-
-#### Other useful docker commands
-
-- `docker ps` - shows all containers currently running
-- `docker stop CONTAINER_NAME` - stops a container
-- `docker rm CONTAINER_NAME` - removes an existing container.
-- `docker stats` - shows current CPU, Memory, and network usage for each container
-- `docker kill CONTAINER_NAME` - kills a container (in case selenium hangs up)
-- `docker logs -f CONTAINER_NAME` - follow the console output of the specified container
-- `docker-compose down` - stops and removes containers created with compose
-- `docker-compose stop` - stops all running containers created with compose.
-
-#### Selenium Grid
-
-You may want to execute tests against multiple browsers at the same time.  The project root contains a  `docker-compose.yml` file that you can use to launch a selenium grid with a hub container, a firefox node, and a chrome node. Launch a docker shell and enter `docker-compose up`. This will download all the dependencies, launch the containers and register them to the hub.  You still need to specify the browsers you want the tests to execute in the test configuration file, otherwise only firefox will be used by default.
 
 #### Selenium Grid Philosophy
 
@@ -71,8 +37,6 @@ To execute the entire test suite in local development, use `grunt webdriver:test
 You can alternatively execute tests by running `node_modules/.bin/wdio <configfile>` from the project base directory. If you would like to specify a different configuration file, just run `wdio <path/to/config/file>` or add it to the Gruntfile.
 
 WebdriverIO's command line utility can walk you through the configuration process by running `node_module/.bn/wdio config`. This will ask question step by step to help you generate your new configurations.
-
-***Note to docker users:*** You will need to edit your ***.conf.js file(s) and add the docker host IP and and port for the test runner to communicate with docker.  Default variables *(Host & Port)* **MUST** be at the top of the configuration file to override the default config, as the the config file executes synchronously.
 
 #### Config Files
 
