@@ -102,10 +102,5 @@ node_modules
 
 # Created by .ignore support plugin (hsz.mobi)
 
-.idea
-#test/reports
-reports/errorShots
-reports/allure-results/
-reports/junit/
-
-allure-report/
+reports/
+test/devFeatures/
