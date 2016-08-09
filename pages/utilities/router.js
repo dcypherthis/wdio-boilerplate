@@ -15,8 +15,10 @@ export default class router {
      */
     getContext() {
         currentUrl = browser.getUrl();
-        if (currentUrl.match(/example/)) {
-            page = new pages.Example_page();
+        if (currentUrl === 'https://the-internet.herokuapp.com/') {
+            page = new pages.TheInternet_page();
+        // else if (currentUrl.match(/example/)) {
+        //         page = new pages.Example_page();
         } else {
             throw Error(`The url ${currentUrl} does not match any pages defined in the router.js file`);
         }
@@ -33,8 +35,8 @@ export default class router {
     setContext(targetPage) {
         this.page = page;
         switch (targetPage) {
-            case 'Example':
-                page = new pages.Example_page();
+            case 'The Internet':
+                page = new pages.TheInternet_page();
                 break;
             default:
                 throw Error(`The ${targetPage} page is not defined as a valid case in router.setContext(targetPage)`);

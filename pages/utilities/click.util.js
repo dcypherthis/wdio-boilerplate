@@ -5,7 +5,7 @@
  * @param {Number=} timeout time in ms (default: 500)
  * @returns {void}
  */
-exports.clickAndWait = (selector, timeout) => {
+exports.waitAndClick = (selector, timeout) => {
     if (!timeout) {
         timeout = 20000;
     }

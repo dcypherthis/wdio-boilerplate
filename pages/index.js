@@ -1,5 +1,5 @@
-import Example_page from './pageObjects/example.page';
+import TheInternet_page from './pageObjects/theInternet.page';
 
 export default {
-    Example_page
+   TheInternet_page
 };
