@@ -2,7 +2,11 @@
  * When Steps
  */
 
-const examplePage = require('.././example.page');
+"use strict";
+
+import container from '../utility/container';
+let _page, _account, _auth, _route;
+const path = require('path');
 
 module.exports = function(){
 
