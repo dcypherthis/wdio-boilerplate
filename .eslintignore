@@ -1,0 +1,12 @@
+changelog.md
+npm-debug.log
+package.json
+readme.md
+Owners.yaml
+.github/
+testLegacy/
+test/devFeatures/
+.travis.yml
+LICENSE-MIT
+.nvmrc
+.editorconfig
